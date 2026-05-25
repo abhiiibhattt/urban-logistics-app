@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Create Order{% endblock %}
+
+{% block content %}
+<h2>Create Order</h2>
+
+<div class="card form-card">
+    <form method="post">
+
+        <div class="form-group">
+            <label>Order Reference</label>
+            <input type="text" name="order_reference" required>
+        </div>
+
+        <div class="form-group">
+            <label>Customer</label>
+            <select name="customer_id" required>
+                <option value="">Select customer</option>
+                {% for customer in customers %}
+                <option value="{{ customer.id }}">
+                    {{ customer.full_name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Hub</label>
+            <select name="hub_id" required>
+                <option value="">Select hub</option>
+                {% for hub in hubs %}
+                <option value="{{ hub.id }}">
+                    {{ hub.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">Create Order</button>
+            <a href="{{ url_for('orders.list_orders') }}" class="btn-secondary">
+                Cancel
+            </a>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

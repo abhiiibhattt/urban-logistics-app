@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Create Order{% endblock %}
+
+{% block content %}
+<h2>Create New Order</h2>
+
+<div class="card form-card">
+    <form method="POST">
+
+        <div class="form-group">
+            <label>Order Reference</label>
+            <input type="text" name="order_reference" required>
+        </div>
+
+        <div class="form-group">
+            <label>Select Existing Customer</label>
+            <select name="customer_id">
+                <option value="">-- New Customer --</option>
+                {% for customer in customers %}
+                <option value="{{ customer.id }}">
+                    {{ customer.full_name }} ({{ customer.phone_number }})
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>New Customer Name</label>
+            <input type="text" name="new_customer_name">
+        </div>
+
+        <div class="form-group">
+            <label>New Customer Phone</label>
+            <input type="text" name="new_customer_phone">
+        </div>
+
+        <div class="form-group">
+            <label>New Customer Email</label>
+            <input type="text" name="new_customer_email">
+        </div>
+
+        <div class="form-group">
+            <label>Hub</label>
+            <select name="hub_id" required>
+                {% for hub in hubs %}
+                <option value="{{ hub.id }}">{{ hub.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">Create Order</button>
+            <a class="btn-secondary" href="{{ url_for('orders.list_orders') }}">Cancel</a>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

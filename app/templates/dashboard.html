@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<h2>Operations Dashboard</h2>
+
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="kpi-label">Total Orders</div>
+        <div class="kpi-value">{{ total_orders }}</div>
+    </div>
+
+    <div class="kpi-card">
+        <div class="kpi-label">Active Deliveries</div>
+        <div class="kpi-value">{{ active_deliveries }}</div>
+    </div>
+
+    <div class="kpi-card">
+        <div class="kpi-label">Active Partners</div>
+        <div class="kpi-value">{{ active_partners }}</div>
+    </div>
+</div>
+
+<h3>Recent Deliveries</h3>
+<p class="text-muted">Latest status updates</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Delivery ID</th>
+            <th>Order Ref</th>
+            <th>Partner</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in recent_deliveries %}
+        <tr>
+            <td>
+                <a href="{{ url_for('deliveries.detail', delivery_id=row.delivery.id) }}">
+                    #{{ row.delivery.id }}
+                </a>
+            </td>
+
+            <td>{{ row.order_ref }}</td>
+
+            <td>{{ row.partner_name }}</td>
+
+            <td>
+                {% if row.status %}
+                    <span class="badge badge-{{ row.status.name | lower }}">
+                        {{ row.status.name.replace("_", " ") }}
+                    </span>
+                {% else %}
+                    <span class="badge badge-created">
+                        CREATED
+                    </span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

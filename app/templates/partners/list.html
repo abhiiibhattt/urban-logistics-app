@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Partners{% endblock %}
+
+{% block content %}
+<h2>Delivery Partners</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Hub</th>
+            <th>Status</th>
+            <th>Active Deliveries</th>
+            <th>Capacity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.partner.name }}</td>
+            <td>{{ row.partner.hub.name }}</td>
+            <td>
+                {% if row.partner.is_active %}
+                <span class="badge badge-delivered">Active</span>
+                {% else %}
+                <span class="badge badge-failed">Inactive</span>
+                {% endif %}
+            </td>
+            <td>{{ row.active_deliveries }}</td>
+            <td>{{ row.partner.max_active_deliveries }}</td>
+            <td>
+                {% if row.partner.is_active %}
+                <form class="inline-form"
+                      method="post"
+                      action="{{ url_for('partners.deactivate_partner', partner_id=row.partner.id) }}"
+                      data-confirm="Deactivate this partner?">
+                    <button type="submit">Deactivate</button>
+                </form>
+                {% else %}
+                <form class="inline-form"
+                      method="post"
+                      action="{{ url_for('partners.activate_partner', partner_id=row.partner.id) }}">
+                    <button type="submit">Activate</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6" class="text-muted">No partners found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

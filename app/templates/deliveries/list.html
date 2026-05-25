@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Deliveries{% endblock %}
+
+{% block content %}
+<h2>Deliveries</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Order Reference</th>
+            <th>Partner</th>
+            <th>Status</th>
+            <th>Assigned At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            <td>
+                <a href="{{ url_for('deliveries.detail', delivery_id=row.delivery.id) }}">
+                    #{{ row.delivery.id }}
+                </a>
+            </td>
+            <td>{{ row.delivery.order.order_reference }}</td>
+            <td>{{ row.delivery.partner.name }}</td>
+            <td>
+                {% if row.status %}
+                <span class="badge badge-{{ row.status.name | lower }}">
+                    {{ row.status.name.replace("_", " ") }}
+                </span>
+                {% else %}
+                <span class="badge badge-created">Not Started</span>
+                {% endif %}
+            </td>
+            <td>{{ row.delivery.assigned_at }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" class="text-muted">No deliveries found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

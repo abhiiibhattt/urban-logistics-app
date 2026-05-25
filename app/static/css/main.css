@@ -1,0 +1,388 @@
+/* =========================================================
+   BASE RESET
+   ========================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================================
+   THEME VARIABLES (DARK MODE)
+   ========================================================= */
+body.theme-dark {
+    --bg-main: #0b1220;
+    --bg-surface: #111827;
+    --bg-elevated: #1f2937;
+
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+
+    --border-color: #2d3748;
+
+    --accent: #3b82f6;
+
+    --success-bg: #064e3b;
+    --success-text: #6ee7b7;
+
+    --error-bg: #7f1d1d;
+    --error-text: #fecaca;
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =========================================================
+   HEADER / NAV
+   ========================================================= */
+.app-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-left: 16px;
+    font-size: 14px;
+}
+
+.nav a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.app-footer {
+    margin-top: 40px;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   FLASH MESSAGES
+   ========================================================= */
+.flash-wrapper {
+    margin-bottom: 20px;
+}
+
+.flash {
+    padding: 12px 14px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.flash.success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.flash.error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    color: var(--text-primary);
+}
+
+h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+.card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 24px;
+}
+
+/* =========================================================
+   DASHBOARD KPI CARDS
+   ========================================================= */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.kpi-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.kpi-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+}
+
+.kpi-value {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: var(--bg-elevated);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+td {
+    color: var(--text-secondary);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #0f172a;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+button {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--accent);
+    color: #ffffff;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: #374151;
+    color: #e5e7eb;
+}
+
+.btn-secondary:hover {
+    opacity: 0.85;
+}
+
+.btn-link {
+    background: none;
+    color: var(--accent);
+    padding: 0;
+    font-size: 14px;
+}
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+.form-card {
+    max-width: 520px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-elevated);
+    color: var(--text-primary);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.inline-form {
+    display: inline-flex;
+}
+
+/* =========================================================
+   BADGES (STATUS)
+   ========================================================= */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Delivery status badges */
+.badge-created {
+    background-color: #2f80ed;
+    color: #ffffff;
+}
+
+.badge-assigned {
+    background-color: #f2c94c;
+    color: #000000;
+}
+
+.badge-in_transit {
+    background-color: #9b51e0;
+    color: #ffffff;
+}
+
+.badge-picked_up {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.badge-delivered {
+    background-color: #27ae60;
+    color: #ffffff;
+}
+
+.badge-failed {
+    background-color: #b91c1c;
+    color: #ffffff;
+}
+
+.badge-cancelled {
+    background-color: #7f1d1d;
+    color: #fecaca;
+}
+
+.status-history {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+}
+
+.status-history li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* =========================================================
+   META / INFO GRID (DETAIL PAGES)
+   ========================================================= */
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.meta-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.meta-value {
+    font-size: 15px;
+    margin-top: 4px;
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+.text-muted {
+    color: var(--text-muted);
+}

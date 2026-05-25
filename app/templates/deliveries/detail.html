@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Delivery #{{ delivery.id }}{% endblock %}
+
+{% block content %}
+<h2>Delivery #{{ delivery.id }}</h2>
+
+<section class="card">
+    <div class="meta-grid">
+        <div>
+            <span class="meta-label">Order</span>
+            <div class="meta-value">{{ delivery.order.order_reference }}</div>
+        </div>
+
+        <div>
+            <span class="meta-label">Partner</span>
+            <div class="meta-value">{{ delivery.partner.name }}</div>
+        </div>
+
+        <div>
+            <span class="meta-label">Current Status</span>
+            <div class="meta-value" id="current-status">
+                {% if current_status %}
+                <span class="badge badge-{{ current_status.name|lower }}">
+                    {{ current_status.name.replace("_", " ") }}
+                </span>
+                {% else %}
+                <span class="badge badge-created">Not Started</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="card">
+    <h3>Status History</h3>
+    {% if status_logs %}
+    <ul class="status-history">
+        {% for log in status_logs %}
+        <li>
+            <span class="badge badge-{{ log.status.name|lower }}">
+                {{ log.status.name.replace("_", " ") }}
+            </span>
+            <span class="text-muted">{{ log.status_timestamp }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-muted">No status updates recorded yet.</p>
+    {% endif %}
+</section>
+
+<section class="card">
+    <h3>Update Status</h3>
+
+    {% if allowed_next_statuses %}
+    <form id="status-form" data-delivery-id="{{ delivery.id }}">
+        <select name="status" required>
+            {% for status in allowed_next_statuses %}
+            <option value="{{ status.name }}">
+                {{ status.name.replace("_", " ") }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <div class="form-actions">
+            <button type="submit">Update</button>
+            <span id="status-feedback" class="text-muted"></span>
+        </div>
+    </form>
+    {% else %}
+    <p class="text-muted">
+        This delivery is completed and cannot be updated.
+    </p>
+    {% endif %}
+</section>
+{% endblock %}
