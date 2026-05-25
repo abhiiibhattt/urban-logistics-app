@@ -82,7 +82,7 @@ urban-logistics-app/
 ### Clone Repository
 
 ```bash id="v8m2tk"
-git clone https://github.com/YOUR_USERNAME/urban-logistics-app.git
+git clone https://github.com/abhiiibhattt/urban-logistics-app.git
 ```
 
 ### Navigate to Project
