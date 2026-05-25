@@ -1,57 +1,187 @@
-# Urban Logistics App
+# Urban Logistics App 🚚
 
-A Flask operations dashboard for managing orders, delivery partners, and delivery status workflows.
+An AI-powered Urban Logistics and Delivery Management System designed to streamline delivery operations, optimize urban transportation workflows, and improve logistics efficiency using modern software engineering practices.
 
-## Current Features
+---
 
-- Dashboard KPIs for total orders, active deliveries, and active partners
-- Order creation with existing or new customers
-- Automatic delivery partner assignment by hub and active capacity
-- Delivery status history with guarded state transitions
-- Partner activation/deactivation service rules
-- Alembic/Flask-Migrate database migrations
+## 🌐 Overview
 
-## Setup
+This project focuses on building a scalable logistics platform capable of handling:
 
-Create a virtual environment outside source control:
+* Delivery tracking
+* Fleet management
+* Route optimization
+* Order management
+* Real-time logistics workflows
+* Urban transportation analytics
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+The application is developed using Flask and Python with a modular backend architecture.
+
+---
+
+## 🚀 Features
+
+* User authentication system
+* Delivery and order management
+* Route optimization workflows
+* Fleet tracking support
+* Database integration using SQLAlchemy
+* Flask-based backend architecture
+* Migration support using Alembic
+* Environment-based configuration
+* Modular project structure
+* Scalable deployment-ready design
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+
+* Python
+* Flask
+* SQLAlchemy
+* Flask-Migrate
+* Alembic
+
+### Database
+
+* SQLite / PostgreSQL (configurable)
+
+### Tools & Utilities
+
+* Git & GitHub
+* Virtual Environment (venv)
+* dotenv configuration
+* Flask CLI
+
+---
+
+## 📂 Project Structure
+
+```bash id="4n9xqp"
+urban-logistics-app/
+│
+├── app/
+├── migrations/
+├── scripts/
+├── tests/
+├── instance/
+│
+├── requirements.txt
+├── run.py
+├── .flaskenv
+├── .env.example
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash id="v8m2tk"
+git clone https://github.com/YOUR_USERNAME/urban-logistics-app.git
+```
+
+### Navigate to Project
+
+```bash id="w3q7rc"
+cd urban-logistics-app
+```
+
+### Create Virtual Environment
+
+```bash id="e1k6pn"
+python -m venv venv
+```
+
+### Activate Virtual Environment
+
+#### Windows
+
+```bash id="u4f9lm"
+venv\Scripts\activate
+```
+
+#### Linux / macOS
+
+```bash id="n7r2vx"
+source venv/bin/activate
+```
+
+---
+
+## 📦 Install Dependencies
+
+```bash id="j5c8qy"
 pip install -r requirements.txt
 ```
 
-Copy the example environment file:
+---
 
-```powershell
-Copy-Item .env.example .env
+## ▶️ Run Application
+
+```bash id="k2t7wp"
+python run.py
 ```
 
-For local development, the app can use SQLite through `DATABASE_URL=sqlite:///urban_logistics.db`.
+The application will start locally on:
 
-Initialize the database:
-
-```powershell
-flask db upgrade
-python scripts\seed.py
+```text id="f9v3qa"
+http://127.0.0.1:5000
 ```
 
-Run the app:
+---
 
-```powershell
-flask run
-```
+## 🧪 Testing
 
-Open `http://127.0.0.1:5000`.
+Run tests using:
 
-## Tests
-
-```powershell
+```bash id="q1x6mr"
 pytest
 ```
 
-## Notes
+---
 
-- Do not commit `venv/`, `.venv/`, `.env`, local database files, or `__pycache__/`.
-- The original archive included a machine-specific `venv`; recreate the environment locally instead.
-- Production should use a real `SECRET_KEY`, a managed PostgreSQL database, HTTPS, and authentication.
+## 🔒 Environment Variables
+
+Create a `.env` file using `.env.example` as reference.
+
+Example:
+
+```env id="b4n8tk"
+SECRET_KEY=your_secret_key
+DATABASE_URL=sqlite:///app.db
+FLASK_ENV=development
+```
+
+---
+
+## 📈 Future Enhancements
+
+* AI-based route prediction
+* Real-time GPS integration
+* Traffic-aware optimization
+* Delivery analytics dashboard
+* Fleet monitoring system
+* Machine learning-based logistics optimization
+* Cloud deployment support
+
+---
+
+## 👨‍💻 Author
+
+Abhinava Bhat
+
+* GitHub: https://github.com/abhiiibhattt
+* Portfolio: https://abhiiibhattt.github.io/portfolio/
+
+---
+
+## 📌 License
+
+This project is intended for educational, research, and portfolio purposes.
+
+© 2026 Abhinava Bhat. All rights reserved.
